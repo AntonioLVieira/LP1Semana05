@@ -1,14 +1,16 @@
+using System;
+
 namespace MyGame
 {
     public class Enemy
     {
-        private string name; 
+        private string name;
         private float health;
         private float shield;
 
         public Enemy(string name)
         {
-            this.name = name;
+            SetName(name); 
             health = 100;
             shield = 0;
         }
@@ -16,6 +18,21 @@ namespace MyGame
         public string GetName()
         {
             return name;
+        }
+
+        public void SetName(string newName)
+        {
+            name = newName.Substring(0, Math.Min(newName.Length, 8));
+        }
+
+        public float GetHealth()
+        {
+            return health;
+        }
+
+        public float GetShield()
+        {
+            return shield;
         }
 
         public void TakeDamage(float damage)
